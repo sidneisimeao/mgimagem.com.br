@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["standard"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "globals": {
+    "use": true
+  },
+  "rules": {
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "ignore",
+        "named": "ignore",
+        "asyncArrow": "ignore"
+      }
+    ]
+  }
+}

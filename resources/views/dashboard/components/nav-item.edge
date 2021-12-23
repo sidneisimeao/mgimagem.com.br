@@ -1,0 +1,17 @@
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo_{{ id }}" aria-expanded="true"
+    aria-controls="collapseTwo">
+    <i class="fas {{ icon }}" style='color: #6BABB4;'></i>
+    <span>{{ title }}</span>
+  </a>
+  <div id="collapseTwo_{{ id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <h6 class="collapse-header">{{ description }}</h6>
+      @if(items)
+      @each( item in items)
+      <a class="collapse-item" href="{{ route(item.route) }}">{{ item.name }}</a>
+      @endeach
+      @endif
+    </div>
+  </div>
+</li>

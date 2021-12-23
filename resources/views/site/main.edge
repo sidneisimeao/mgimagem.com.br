@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta http-equiv="Content-Language" content="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonância magnetica, Tomografia , Ultrasom, Desintometria ossea">
+  <meta name="title" content="Diagnostico por Imagem">
+  <meta property="og:url" content="https://pixeldiagnostico.com.br" />
+  <meta property="og:title" content="" />
+  <meta property="og:description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonancia magnetica, Tomografia , Ultrasom, Desintometria ossea" />
+  <meta property="og:image:url" content="{{ assetsUrl('img/pixel.jpeg') }}" />
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="" />
+  <title>Pixel Diagnósticos</title>
+  <!-- Font Awesome icons (free version)-->
+  {{ style('vendor/fontawesome-free/css/all.min.css') }}
+  {{ style('front/css/styles.css') }}
+  {{ style('front/css/heading.css') }}
+  {{ style('front/css/body.css') }}
+</head>
+
+<body id="page-top">
+
+  <!-- Sidebar -->
+  @include('site.navbar')
+  <!-- End of Sidebar -->
+
+  <!-- Heading -->
+  @include('site.header')
+  <!-- End of Heading -->
+
+  <!-- About -->
+  @!component('site.about',
+  {
+  name: content.about.name,
+  description: content.about.description
+  })
+  <!-- End of About -->
+
+  <!-- Services -->
+  @!component('site.services',
+  {
+  services: content.services }
+  )
+  <!-- End of Services -->
+
+  <!-- Agreements -->
+  @!component('site.agreements',
+  {
+  agreements: content.agreements }
+  )
+  <!-- End of Agreements -->
+
+  <!-- Blog -->
+  @!component('site.blog',
+  {
+  posts: content.posts }
+  )
+  <!-- End of Blog -->
+
+  <!-- Map -->
+  @include('site.map')
+  <!-- End of Map -->
+
+  <!-- Footer -->
+  @include('site.footer')
+  <!-- End of Footer -->
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+  <div class="scroll-to-top d-lg-none position-fixed"><a
+      class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i
+        class="fa fa-chevron-up"></i></a></div>
+  <!-- Bootstrap core JS-->
+  {{ script('vendor/jquery/jquery.min.js') }}
+  {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  <!-- Third party plugin JS-->
+  {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Core theme JS-->
+  {{ script('front/js/scripts.js') }}
+</body>
+
+</html>

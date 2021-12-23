@@ -1,0 +1,88 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-user-plus fa-sm"></i> Cadastro de usuários</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-9 col-lg-6">
+          <div class="card-body">
+            <form action="{{ route('users.store') }}?_method=POST" method="POST" class="form" role="form"
+              autocomplete="off">
+              {{ csrfField() }}
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('username') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o nome completo..." value="{{ old('username', '') }}" name="username">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Email:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('email') ? 'is-invalid' : '') }}" type="email"
+                    placeholder="Seu e-mail..." value="{{ old('email', '') }}" name="email">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Senha:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('password') ? 'is-invalid' : '') }}" type="password"
+                    placeholder="Crie uma senha..." value="{{ old('password', '') }}" name="password">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Confirme senha:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('password_confirmation') ? 'is-invalid' : '') }}"
+                    type="password" placeholder="Confirme sua senha..." value="{{ old('password_confirmation', '') }}"
+                    name="password_confirmation">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('password_confirmation'), hasErrorFor('password_confirmation')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-lg-9">
+                  <a href="{{ route('users.index') }}"  class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text text-white">Voltar</span>
+                  </a>
+                  <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Concluído</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection

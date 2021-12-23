@@ -1,0 +1,60 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-user-plus fa-sm"></i> Atualizar dados do usuário
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-9 col-lg-6">
+          <div class="card-body">
+            <form action="{{ route('users.update', { id: auth.user.id }) }}?_method=PATCH" method="POST" class="form">
+              {{ csrfField() }}
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('username') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o nome completo..." value="{{ old('username', username || '') }}" name="username">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Email:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('email') ? 'is-invalid' : '') }}" type="email"
+                    placeholder="Seu e-mail..." value="{{ old('email', email || '') }}" name="email">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+                </div>
+              </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label"></label>
+            <div class="col-lg-9">
+              <a href="{{ route('users.index') }}"  class="btn btn-secondary btn-icon-split">
+                <span class="icon text-white">
+                  <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text text-white">Voltar</span>
+              </a>
+              <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                <span class="icon text-white">
+                  <i class="fas fa-edit"></i>
+                </span>
+                <span class="text text-white">Concluído</span>
+              </button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /form user info -->
+@endsection

@@ -1,0 +1,89 @@
+@layout('layouts.dashboard')
+@section('styles')
+{{ style('vendor/datatables/dataTables.bootstrap4.min.css') }}
+@endsection
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-11 col-md-11">
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+    <!-- DataTales Example -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-cog"></i> Todos Serviços</h3>
+        <br />
+        <a href="{{ route('services.create') }}" class="btn btn-info btn-icon-split">
+          <span class="icon text-white">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span class="text text-white">Novo Serviço</span>
+        </a>
+        <br /><br />
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Icone</th>
+                <th>Criada em</th>
+                <th class='text-center'>Editar</th>
+                  <!--<th class='text-center'>Remover</th>  -->
+              </tr>
+            </thead>
+            <tbody>
+              @if(services)
+              @each(service in services)
+              <tr>
+                <td>{{ service.id }}</td>
+                <td><b>{{ service.name }}</td></b></td>
+                <td> <a target="new" href="https://fontawesome.com/icons/{{ service.icon || 'cog' }}?style=solid" type="button"class="btn btn-lg btn-block" ><i class="fas fa-lg fa-{{ service.icon || 'cog' }}"></i></a></td></td>
+                <td>{{ service.created_at }}</td>
+                <td class='text-center'>
+                  <a href="{{ route('services.edit', {id: service.id }) }}" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Editar</span>
+                  </a>
+                </td>
+                <!--
+                <td class='text-center'>
+                 <form action="{{-- route('services.destroy', {id: service.id }) --}}?_method=DELETE" method="POST">
+                  {{-- csrfField() --}}
+                  <button onclick="()=> myFunction()" class="btn-delete btn btn-danger btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-trash-alt"></i>
+                    </span>
+                    <span class="text text-white">Excluir</span>
+                  </button>
+                 </form>
+                </td>
+                -->
+              </tr>
+              @endeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- service level plugins -->
+{{ script('vendor/datatables/jquery.dataTables.min.js') }}
+{{ script('vendor/datatables/dataTables.bootstrap4.min.js') }}
+<!-- service level custom scripts -->
+{{ script('js/demo/datatables-demo.js') }}
+{{ script('js/buttonDelete.js') }}
+@endsection

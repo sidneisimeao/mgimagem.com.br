@@ -1,0 +1,67 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-handshake fa-sm"></i> Atualizar dados do convênio</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-9">
+          <div class="card-body">
+            @if(id)
+            <form action="{{ route('agreements.update', { id }) }}?_method=PUT" method="POST" class="form" role="form"
+            autocomplete="off">
+            @else
+            <form action="{{ route('agreements.store') }}?_method=POST" method="POST" class="form" role="form"
+            autocomplete="off">
+            @endif
+              {{ csrfField() }}
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('name') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o nome do convênio..." value="{{ old('name', name|| '') }}" name="name">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Link:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('link') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o link do convênio. Ex: https://pixeldiagnostico.com.br/" value="{{ old('link', link|| '') }}" name="link">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('link'), hasErrorFor('link')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-12">
+                  <a href="{{ route('agreements.index') }}" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text text-white">Voltar</span>
+                  </a>
+                  <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Concluído</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection

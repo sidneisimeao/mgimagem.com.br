@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta http-equiv="Content-Language" content="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonância magnetica, Tomografia , Ultrasom, Desintometria ossea,  {{ term || '' }}">
+  <meta name="title" content="Diagnostico por Imagem">
+  <meta property="og:url" content="https://pixeldiagnostico.com.br" />
+  <meta property="og:title" content="Postagem de busca" />
+  <meta property="og:description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonancia magnetica, Tomografia , Ultrasom, Desintometria ossea, {{ term || '' }}" />
+  <meta property="og:image:url" content="{{ assetsUrl('img/pixel.jpeg') }}" />
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="" />
+  <title>Pixel Diagnósticos</title>
+  <!-- Font Awesome icons (free version)-->
+  {{ style('vendor/fontawesome-free/css/all.min.css') }}
+  {{ style('front/css/styles.css') }}
+  {{ style('front/css/heading.css') }}
+  {{ style('front/css/body.css') }}
+</head>
+
+<body id="page-top">
+
+  <!-- Sidebar -->
+  @include('site.navbar')
+  <!-- End of Sidebar -->
+
+  <!-- Page Content -->
+  <div class="container container-blog">
+
+    <!-- Search Widget -->
+    <br />
+
+    <form action="{{ route('site.searchTerm') }}" method="GET" id='form-search' class="form-row" role="form">
+      <div class="">
+        <h3 class="m-0 font-weight-bold text-info">Pesquisar: <i class="fas fa-search"></i></h3>
+      </div>
+<br /><br />
+      <label class="label" for="input-term"><b></b></label>
+      <div class="input-group mb-3">
+        <input value="{{ term || ''}}" id="input-term" type="text" class="form-control" placeholder="Digite algo..."
+          aria-label="Digite algo..." name="term" aria-describedby="basic-addon2" required>
+        <div class="input-group-append">
+          <button class="btn btn-secondary" aria-label="Search" type="submit">Procurar</button>
+        </div>
+        {{ elIf('<span class=text-danger>Nenhum resultado encontrado...</span>', getErrorFor('term'), hasErrorFor('term')) }}
+      </div>
+    </form>
+
+    <div class="row">
+
+      <div class="my-3 p-3 bg-white rounded box-shadow col-12">
+
+        @if(count)
+        <h4 class="border-bottom border-gray pb-2 mb-0">Exibindo ({{ count || 0 }}) resultado(s) para busca:
+          <span class="text-info">{{ term }}</span>
+        </h4>
+        @each(item in posts)
+        <div class="media text-muted pt-3 border-bottom border-gray media-search ">
+          <a href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}">
+            <p class="media-body pb-3 mb-0 small lh-125 ">
+              <strong
+                class="text-info">{{ item.created_at.toISOString().slice(0, 10).split('-').reverse().join('-') }}</strong>
+              - {{ safe(item.name.replace(term, '<span style="color:#2C3E50;font-weight:bold">'+term+'</span>')) }}
+            </p>
+          </a>
+        </div>
+        @endeach
+        @endif
+        @if(message)
+        <div class="alert alert-info" role="alert">
+          {{ message }}
+        </div>
+        @endif
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  @include('site.footer')
+  <!-- End of Footer -->
+
+  <!-- Bootstrap core JS-->
+  {{ script('vendor/jquery/jquery.min.js') }}
+  {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  <!-- Third party plugin JS-->
+  {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Core theme JS-->
+  {{ script('front/js/scripts.js') }}
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<section class="page-section portfolio" id="services">
+  <div class="container border-bottom  pb-5">
+    <!-- Portfolio Section Heading-->
+    <div class="text-center">
+      <h2 class="page-section-heading mb-5 text-secondary d-inline-block">SERVIÇOS</h2>
+    </div>
+    <!-- Portfolio Grid Items-->
+    <div class="row justify-content-center">
+      <!-- Portfolio Items-->
+      @if(services)
+        @each(item in services)
+        <div class="col-md-6 col-lg-6 mb-5">
+        <h4>
+          <span> <i class="fas fa-lg fa-{{ item.icon }} mb-3" style='color: #6BABB4;'></i></span>
+          <strong class="ml-2">{{ item.name }}</strong>
+        </h4>
+        <p>{{ item.description }}</p>
+        </div>
+        @endeach
+
+      @endif
+
+    </div>
+  </div>
+</section>

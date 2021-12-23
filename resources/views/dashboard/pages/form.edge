@@ -1,0 +1,70 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-file fa-sm"></i> Atualizar conteúdo da página</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-9">
+          <div class="card-body">
+            <form action="{{ route('pages.update', { id }) }}?_method=PUT" method="POST" class="form" role="form"
+              autocomplete="off">
+              {{ csrfField() }}
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nome da página:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('name') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o título da página..." value="{{ old('name', name|| '') }}" name="name">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12">
+                  <label for="description">Conteúdo da página</label>
+                  <textarea placeholder="Insira a descrição da página..." class="form-control" name="description" id="description">{{ old('description', description || '') }}
+                  </textarea>
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('description'), hasErrorFor('description')) }}
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-12">
+                  <a href="{{ route('pages.index') }}" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text text-white">Voltar</span>
+                  </a>
+                  <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Concluído</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- Page level plugins -->
+<script src="https://cdn.tiny.cloud/1/gptix5hc422g84nqvo04q8pif6bhdajoionf7awp2ca2njb8/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<!-- Page level custom scripts -->
+{{ script('js/demo/tinymce.js') }}
+@endsection

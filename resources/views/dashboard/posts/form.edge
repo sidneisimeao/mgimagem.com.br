@@ -1,0 +1,120 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-scroll fa-sm"></i> Postagem</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-9">
+          <div class="card-body">
+            @if(id)
+            <form action="{{ route('posts.update', { id }) }}?_method=PUT" method="POST" class="form" role="form"
+              autocomplete="off">
+              @else
+              <form action="{{ route('posts.store') }}?_method=POST" method="POST" class="form" role="form"
+                autocomplete="off">
+                @endif
+                {{ csrfField() }}
+                <div class="form-group row">
+                  <label for="example-datetime-local-input" class="col-3 col-form-label">Agendar postagem para:</label>
+                  <div class="col-9">
+                    <input class="form-control" type="text" value="{{ old('created_at', created_at || '') }}" name="created_at" id="created_at">
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('created_at'), hasErrorFor('created_at')) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Autor:</label>
+                  <div class="col-lg-9">
+                    <input class="form-control {{ (hasErrorFor('author') ? 'is-invalid' : '') }}" type="text"
+                      placeholder="Título da postagem..."
+                      value="{{ old('author', author|| (auth.user.username || '')) }}" name="author">
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('author'), hasErrorFor('author')) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Título da postagem:</label>
+                  <div class="col-lg-9">
+                    <input class="form-control {{ (hasErrorFor('name') ? 'is-invalid' : '') }}" type="text"
+                      placeholder="Título da postagem..." value="{{ old('name', name|| '') }}" name="name">
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-12">
+                    <label for="description">Conteúdo da postagem</label>
+                    <textarea placeholder="Conteúdo da postagem..." class="form-control" name="description"
+                      id="description">{{ old('description', description || '') }}
+                  </textarea>
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('description'), hasErrorFor('description')) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-12">
+                    <label for="seo">Resumo: (Serão considerados somente 150 caracteres)
+                    </label>
+                    <textarea
+                      placeholder="Preencher este campo ajuda o site a ser encontrado pelos mecanismos de bucas como o Google..."
+                      class="form-control" name="seo">{{ old('seo', seo || '') }}</textarea>
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('seo'), hasErrorFor('seo')) }}
+                  </div>
+                  </div>
+                <div class="form-group row">
+                  <div class="col-12">
+                    <label for="tags">Palavras relacionadas: (separe por vírgula). <b>Ex:</b> diagnóstico,
+                      imagem...
+                    </label>
+                    <textarea
+                      placeholder="Preencher este campo ajuda o site a ser encontrado pelos mecanismos de bucas como o Google..."
+                      class="form-control" name="tags">{{ old('tags', tags || '') }}</textarea>
+                    {{ elIf('<span class=text-danger>$self</span>', getErrorFor('tags'), hasErrorFor('tags')) }}
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-12">
+                    <a href="{{ route('posts.index') }}" class="btn btn-secondary btn-icon-split">
+                      <span class="icon text-white">
+                        <i class="fas fa-chevron-left"></i>
+                      </span>
+                      <span class="text text-white">Voltar</span>
+                    </a>
+                    <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                      <span class="icon text-white">
+                        <i class="fas fa-edit"></i>
+                      </span>
+                      <span class="text text-white">Concluído</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection
+@section('scripts')
+
+<!-- Page level plugins -->
+<script src="https://cdn.tiny.cloud/1/gptix5hc422g84nqvo04q8pif6bhdajoionf7awp2ca2njb8/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+
+{{ script('js/jquery.mask.min.js') }}
+<script>
+$('#created_at').mask('00-00-0000', {placeholder: "DD-MM-YYYY"});
+</script>
+
+<!-- Page level custom scripts -->
+{{ script('js/demo/tinymce.js') }}
+@endsection

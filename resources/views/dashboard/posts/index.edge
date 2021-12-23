@@ -1,0 +1,105 @@
+@layout('layouts.dashboard')
+@section('styles')
+{{ style('vendor/datatables/dataTables.bootstrap4.min.css') }}
+@endsection
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-11 col-md-11">
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+    <!-- DataTales Example -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-scroll"></i> Todas postagens</h3>
+        <br />
+        <a href="{{ route('posts.create') }}" class="btn btn-info btn-icon-split">
+          <span class="icon text-white">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span class="text text-white">Nova Postagem</span>
+        </a>
+        <br /><br />
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Agendada para</th>
+                <th>Atualizado em</th>
+                <th class='text-center'>Conteúdo</th>
+                <th class='text-center'>Imagem</th>
+                <th class='text-center'>Thumbnail</th>
+                <th class='text-center'>Excluir Conteúdo</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(posts)
+              @each(post in posts)
+              <tr>
+                <td>{{ post.id }}</td>
+                <td><b>{{ post.name }}</td></b></td>
+                <td>{{  post.created_at.toISOString().slice(0, 10).split('-').reverse().join('-')  }}</td>
+                <td>{{  post.updated_at.toISOString().slice(0, 10).split('-').reverse().join('-')  }}</td>
+                <td class='text-center'>
+                  <a href="{{ route('posts.edit', {id: post.id }) }}" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Editar</span>
+                  </a>
+                </td>
+                <td class='text-center'>
+                  <a href="{{ route('files.edit', {id: post.id }) }}" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-images"></i>
+                    </span>
+                    <span class="text text-white">Editar</span>
+                  </a>
+                </td>
+                <td class='text-center'>
+                  @if(post.file_id)
+                  <div style="height: 50px;overflow: hidden">
+                  <img src="{{ route("files.show", { id: post.file_id  }) }}" width="100px"
+                  alt="{{ post.name }}" class="img-fluid img-thumbnail">
+                 </div>
+                  @endif
+                </td>
+                <td class='text-center'>
+                  <form action="{{ route('posts.destroy', {id: post.id }) }}?_method=DELETE" method="POST">
+                    {{ csrfField() }}
+                    <button onclick="()=> myFunction()" class="btn-delete btn btn-danger btn-icon-split" type="submit">
+                      <span class="icon text-white">
+                        <i class="fas fa-trash-alt"></i>
+                      </span>
+                      <span class="text text-white">Excluir</span>
+                    </button>
+                   </form>
+                </td>
+              </tr>
+              @endeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- post level plugins -->
+{{ script('vendor/datatables/jquery.dataTables.min.js') }}
+{{ script('vendor/datatables/dataTables.bootstrap4.min.js') }}
+<!-- post level custom scripts -->
+{{ script('js/demo/datatables-demo.js') }}
+{{ script('js/buttonDelete.js') }}
+@endsection

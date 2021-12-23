@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta http-equiv="Content-Language" content="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Caros clientes, com o objetivo de atendê-los cada vez melhor e proporcionar mais qualidade e eficiência em exames...">
+  <meta name="title" content="Diagnostico por Imagem">
+  <meta property="og:url" content="https://pixeldiagnostico.com.br/examesweb" />
+  <meta property="og:title" content="Diagnostico por Imagem" />
+  <meta property="og:description"
+    content="Caros clientes, com o objetivo de atendê-los cada vez melhor e proporcionar mais qualidade e eficiência em exames..." />
+  <title>Pixel Diagnósticos</title>
+  <!-- Font Awesome icons (free version)-->
+  {{ style('vendor/fontawesome-free/css/all.min.css') }}
+  {{ style('front/css/styles.css') }}
+  {{ style('front/css/heading.css') }}
+  {{ style('front/css/body.css') }}
+</head>
+
+<body id="page-top" style="background: url('{{ assetsUrl('img/pixel.jpeg') }}') no-repeat center">
+
+  <!-- Sidebar -->
+  @include('site.navbar')
+  <!-- End of Sidebar -->
+
+  <!-- Page Content -->
+  <div class="container container-blog">
+
+
+    <br /<br />
+    <div class="jumbotron mt-5">
+      <h1 class="display-4">ATENÇÃO !</h1>
+      <p class="lead">
+        Caros clientes, com o objetivo de atendê-los cada vez melhor e proporcionar mais qualidade e eficiência em
+        exames, fizemos uma atualização no sistema de acesso web no mês de Julho/2020. Desta forma, a senha de cada
+        usuário mudou e pedimos, por gentileza, que os pacientes atendidos antes desta migração entre em contato conosco
+        para adquirir seu novo login e senha. Atendemos pelo telefone 3722-1617, WhatsApp 99835-7697, e também estamos à
+        disposição para esclarecer dúvidas nas redes sociais.</p>
+      <hr class="my-4">
+      <a class="btn btn-success btn-lg" href="https://www.medcloud.co?page=pixel" target="_blanck" role="button">Acessar
+        !!!</a>
+    </div>
+
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  @include('site.footer')
+  <!-- End of Footer -->
+
+  <!-- Bootstrap core JS-->
+  {{ script('vendor/jquery/jquery.min.js') }}
+  {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  <!-- Third party plugin JS-->
+  {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Core theme JS-->
+  {{ script('front/js/scripts.js') }}
+</body>
+
+</html>

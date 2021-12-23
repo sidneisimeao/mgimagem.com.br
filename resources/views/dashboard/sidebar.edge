@@ -1,0 +1,36 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gray-800 sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3 mb-3"
+    href="{{ route('dashboard.index') }}">
+    <img class="img-fluid rounded" alt="Logotipo Pixel Diagnósticos" src="{{ assetsUrl('img/pixel-logotipo.png') }}" />
+  </a>
+  <!-- Heading -->
+  <div class="sidebar-heading mb-3">Dashboard</div>
+
+  @each( item in getNavBarItems())
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+  <!-- Sidebar Item -->
+  @!component('dashboard.components.nav-item', item )
+  <!-- End Sidebar Item -->
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+  @endeach
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="{{ route('auth.logout') }}" aria-controls="collapseTwo">
+      <i class="fas fa-sign-out-alt" style='color: #6BABB4;'></i>
+      <span>Sair</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none mt-3 d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+</ul>
+<!-- End of Sidebar -->

@@ -1,0 +1,76 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-cog fa-sm"></i> Atualizar conteúdo do serviço</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-9">
+          <div class="card-body">
+            @if(id)
+            <form action="{{ route('services.update', { id }) }}?_method=PUT" method="POST" class="form" role="form"
+            autocomplete="off">
+            @else
+            <form action="{{ route('services.store') }}?_method=POST" method="POST" class="form" role="form"
+            autocomplete="off">
+            @endif
+              {{ csrfField() }}
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nome:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('name') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o nome do serviço..." value="{{ old('name', name|| '') }}" name="name">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12">
+                  <label for="description">Descrição do serviço</label>
+                  <textarea  placeholder="Insira a descrição do serviço..." class="form-control" name="description" >{{ old('description', description || '') }}</textarea>
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('description'), hasErrorFor('description')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Icon nome:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('icon') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Insira o nome do icone: ex: user-md" value="{{ old('icon', icon|| '') }}" name="icon">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('icon'), hasErrorFor('icon')) }}
+                  <span class="text-muted">Icons disponíveis em:</span><a target="new" class="text-info" href="https://fontawesome.com/icons?d=gallery&m=free">
+                     https://fontawesome.com/</a>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-12">
+                  <a href="{{ route('services.index') }}"  class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text text-white">Voltar</span>
+                  </a>
+                  <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Concluído</span>
+                  </button>
+                 </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection

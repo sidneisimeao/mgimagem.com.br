@@ -1,0 +1,63 @@
+@layout('layouts.dashboard')
+@section('styles')
+{{ style('vendor/datatables/dataTables.bootstrap4.min.css') }}
+@endsection
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-11 col-md-11">
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+    <!-- DataTales Example -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-history"></i>Registro de Atividades</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ip</th>
+                <th>Url</th>
+                <th>Ação</th>
+                <th>Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(logs)
+              @each(log in logs)
+              <tr>
+                <td>{{ log.id }}</td>
+                <td>{{ log.username }}</td>
+                <td>{{ log.email }}</td>
+                <td>{{ log.ip }}</td>
+                <td>{{ log.original_url }}</td>
+                <td>{{ log.intended }}</td>
+                <td>{{ log.created_at }}</td>
+              </tr>
+              @endeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- log level plugins -->
+{{ script('vendor/datatables/jquery.dataTables.min.js') }}
+{{ script('vendor/datatables/dataTables.bootstrap4.min.js') }}
+<!-- log level custom scripts -->
+{{ script('js/demo/datatables-demo.js') }}
+@endsection

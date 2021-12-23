@@ -1,0 +1,82 @@
+@layout('layouts.dashboard')
+@section('styles')
+{{ style('vendor/datatables/dataTables.bootstrap4.min.css') }}
+@endsection
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-11 col-md-11">
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+    <!-- DataTales Example -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-file"></i> Perguntas feitas</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Data</th>
+                <th>Respondida</th>
+                <th>Pergunta</th>
+                <th class='text-center'>Editar</th>
+                <th class='text-center'>Remover</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(pages)
+              @each(page in pages)
+              <tr>
+                <td>{{ page.id }}</td>
+                <td><b>{{ page.name }}</td></b></td>
+                <td><b>{{ page.email }}</td></b></td>
+                <td>{{ page.created_at || page.updated_at }}</td>
+                <td><b>{{ page.intended }}</td></b></td>
+                <td>{{ (page.description || '').substring(0, 50) }}...</td>
+                <td class='text-center'>
+                  <a href="{{ route('dr-responde.edit', {id: page.id }) }}" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-eye"></i>
+                    </span>
+                    <span class="text text-white">Vizualizar</span>
+                  </a>
+                </td>
+                <td class='text-center'>
+                  <form action="{{ route('dr-responde.destroy', {id: page.id}) }}?_method=DELETE" method="POST">
+                   {{ csrfField() }}
+                   <button onclick="()=> myFunction()" class="btn-delete btn btn-danger btn-icon-split" type="submit">
+                     <span class="icon text-white">
+                       <i class="fas fa-trash-alt"></i>
+                     </span>
+                     <span class="text text-white">Excluir</span>
+                   </button>
+                  </form>
+                 </td>
+              </tr>
+              @endeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- Page level plugins -->
+{{ script('vendor/datatables/jquery.dataTables.min.js') }}
+{{ script('vendor/datatables/dataTables.bootstrap4.min.js') }}
+<!-- Page level custom scripts -->
+{{ script('js/demo/datatables-demo.js') }}
+@endsection

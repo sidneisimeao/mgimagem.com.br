@@ -1,0 +1,78 @@
+@layout('layouts.dashboard')
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-12 col-md-10">
+
+    <span class="anchor" id="formUserEdit"></span>
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-images fa-sm"></i> Editar Imagem</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-9">
+          <div class="card-body">
+            <form action="{{ route('files.update', { id }) }}?_method=PUT" method="POST" class="form" role="form"
+              autocomplete="off" enctype="multipart/form-data">
+              {{ csrfField() }}
+              <input type="hidden" name='file_id' value="{{ file_id || ''}}">
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Título da postagem:</label>
+                <div class="col-lg-9">
+                  <input class="form-control {{ (hasErrorFor('name') ? 'is-invalid' : '') }}" type="text"
+                    placeholder="Título da postagem" value="{{ old('name', name|| '') }}" name="name" disabled>
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Imagem atual:</label>
+                @if(file_id)
+                <div class="col-lg-9">
+                  <img src="{{ route("files.show", { id: file_id  }) }}" width="300" alt="{{ name }}"
+                    class="img-fluid img-thumbnail">
+                </div>
+                @endif
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Nova imagem:</label>
+                <div class="col-lg-9">
+                  <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
+                  {{ elIf('<span class=text-danger>$self</span>', getErrorFor('file'), hasErrorFor('file')) }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-12">
+                  <a href="{{ route('posts.index') }}" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text text-white">Voltar</span>
+                  </a>
+                  <button class="btn-delete btn btn-info btn-icon-split" type="submit">
+                    <span class="icon text-white">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                    <span class="text text-white">Concluído</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /form user info -->
+
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- Page level plugins -->
+<script src="https://cdn.tiny.cloud/1/gptix5hc422g84nqvo04q8pif6bhdajoionf7awp2ca2njb8/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<!-- Page level custom scripts -->
+{{ script('js/demo/tinymce.js') }}
+@endsection

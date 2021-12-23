@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta http-equiv="Content-Language" content="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonância magnetica, Tomografia , Ultrasom, Desintometria ossea">
+  <meta name="title" content="Diagnostico por Imagem">
+  <meta property="og:url" content="https://pixeldiagnostico.com.br" />
+  <meta property="og:title" content="Postagem do blog" />
+  <meta property="og:description"
+    content="Diagnostico por Imagem, no sul de minas com os exames de Ressonancia magnetica, Tomografia , Ultrasom, Desintometria ossea" />
+  <meta property="og:image:url" content="{{ assetsUrl('img/pixel.jpeg') }}" />
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="" />
+  <title>Pixel Diagnósticos</title>
+  <!-- Font Awesome icons (free version)-->
+  {{ style('vendor/fontawesome-free/css/all.min.css') }}
+  {{ style('front/css/styles.css') }}
+  {{ style('front/css/heading.css') }}
+  {{ style('front/css/body.css') }}
+</head>
+
+<body id="page-top">
+
+  <!-- Sidebar -->
+  @include('site.navbar')
+  <!-- End of Sidebar -->
+
+  <!-- Page Content -->
+  <div class="container container-blog">
+    <div class="text-center">
+      <br />
+      <h2 class="page-section-heading text-secondary d-inline-block">TODOS ARTIGOS</h2>
+
+      <hr />
+
+    </div>
+    <div class="row">
+      <!-- Search Widget -->
+
+      @if(pages)
+      @each(item in data)
+      <div class="col-md-5 col-lg-5 mb-5 shadow p-3 bg-white mx-auto">
+        <span class="text-info">Em:
+          {{ item.created_at.toISOString().slice(0, 10).split('-').reverse().join('-') }}</span>
+        <a href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}" class="blog-image-link">
+          @if(item.file_id)
+          <img class="img-fluid " src="{{ route("site.showPostImage", { id: item.file_id  }) }}" alt="{{ name }}">
+          @endif
+        </a>
+        <h5 class="text-center mt-3">
+          <a style="color:#2c3e50" href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}">
+          <strong class="ml-2 ">{{ item.name }}</strong>
+        </a>
+        </h5>
+      </div>
+      @endeach
+
+      @else
+      <div class="alert alert-info" role="alert">
+        Nenhum artigo encontrado
+      </div>
+      @endif
+
+    </div>
+    @if(data)
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item @if(pageActive===total) {{ 'disabled' }} @endif">
+          <a class="page-link" href="{{ route('site.posts', { id: prevPage }) }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Anterior</span>
+          </a>
+        </li>
+        @each(item in pages)
+        @if(pageActive===$loop.index + 1)
+        <li class="page-item active">
+          <a class="page-link" href="#">{{ $loop.index + 1 }}<span class="sr-only">(current)</span></a>
+        </li>
+        @else
+        <li class="page-item"><a class="page-link"
+            href="{{ route('site.posts', { id: $loop.index + 1 }) }}">{{ ( $loop.index + 1 ) }}</a>
+        </li>
+        @endif
+        @endeach
+        <li class="page-item @if(prevPage===total) {{ 'disabled' }} @endif">
+          <a class="page-link" href="{{ route('site.posts', { id: nextPage }) }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Próxima</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    @endif
+  </div>
+
+  <!-- /.row -->
+
+  <!-- Footer -->
+  @include('site.footer')
+  <!-- End of Footer -->
+
+  <!-- Bootstrap core JS-->
+  {{ script('vendor/jquery/jquery.min.js') }}
+  {{ script('vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  <!-- Third party plugin JS-->
+  {{ script('vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Core theme JS-->
+  {{ script('front/js/scripts.js') }}
+</body>
+
+</html>

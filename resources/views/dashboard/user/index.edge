@@ -1,0 +1,71 @@
+@layout('layouts.dashboard')
+@section('styles')
+{{ style('vendor/datatables/dataTables.bootstrap4.min.css') }}
+@endsection
+@section('content')
+<div class="row align-items-start">
+  <div class="ml-4 col-11 col-md-11">
+    @if(flashMessage('success'))
+    <div class="alert alert-info" role="alert">
+      {{ flashMessage('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
+    <!-- DataTales Example -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="m-0 font-weight-bold text-info"><i class="fas fa-users"></i> Usuários do Sistema</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Criado em</th>
+                <td class='text-center'>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(users)
+              @each(user in users)
+              <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.created_at }}</td>
+                <td class='text-center'>
+                  @if(auth.user.id===user.id)
+                    <a href="{{ route('users.edit', {id: auth.user.id}) }}" class="btn btn-info btn-icon-split">
+                      <span class="icon text-white">
+                        <i class="fas fa-images"></i>
+                      </span>
+                      <span class="text text-white">Editar</span>
+                    </a>
+                    @else
+                    <button type="button" class="btn btn-secondary btn-sm btn-block" disabled>Não permitido</button>
+                    @endif
+                </td>
+              </tr>
+              @endeach
+              @endif
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<!-- Page level plugins -->
+{{ script('vendor/datatables/jquery.dataTables.min.js') }}
+{{ script('vendor/datatables/dataTables.bootstrap4.min.js') }}
+<!-- Page level custom scripts -->
+{{ script('js/demo/datatables-demo.js') }}
+@endsection
