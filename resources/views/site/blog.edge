@@ -10,17 +10,17 @@
       @if(posts)
       @each(item in posts)
       <div class="col-md-5 col-lg-5 mb-5 shadow p-3 bg-white mx-auto">
-        <span class="text-secundary">Em: {{ item.created_at.toISOString().slice(0, 10).split('-').reverse().join('-') }}</span>
+        <span class="text-secundary">Em:
+          {{ item.created_at.toISOString().slice(0, 10).split('-').reverse().join('-') }}</span>
         <a href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}" class="blog-image-link">
           @if(item.file_id)
-          <img class="img-fluid" src="{{ route("site.showPostImage", { id: item.file_id  }) }}"
-            alt="{{ name }}">
+          <img class="img-fluid" src="{{ route("site.showPostImage", { id: item.file_id  }) }}" alt="{{ name }}">
           @endif
         </a>
         <h5 class="text-center">
-          <a style="color:#2C3E50" href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}">
-          <strong class="ml-2 ">{{ item.name }}</strong>
-        </a>
+          <a style="color:#27264E" href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}">
+            <strong class="ml-2 ">{{ item.name }}</strong>
+          </a>
         </h5>
       </div>
       @endeach
@@ -31,7 +31,7 @@
         <a href="{{ route("site.posts") }}" style="width:250px" class="btn  mx-auto btn-outline-info btn-lg btn-block">
           <span class="text ">Ver todas</span>
         </a>
-     </div>
-  </div>
+      </div>
+    </div>
   </div>
 </section>

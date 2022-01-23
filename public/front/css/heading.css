@@ -1,1 +1,171 @@
-@font-face{font-family:'SB Heading';font-style:italic;font-weight:400;font-display:swap;src:local('Roboto Italic'),local('Roboto-Italic'),url(https://fonts.gstatic.com/s/roboto/v20/KFOkCnqEu92Fr1Mu51xIIzIXKMny.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'SB Heading';font-style:italic;font-weight:700;font-display:swap;src:local('Roboto Bold Italic'),local('Roboto-BoldItalic'),url(https://fonts.gstatic.com/s/roboto/v20/KFOjCnqEu92Fr1Mu51TzBic6CsTYl4BO.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'SB Heading';font-style:normal;font-weight:400;font-display:swap;src:local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'SB Heading';font-style:normal;font-weight:700;font-display:swap;src:local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face {
+  font-family: 'SB Heading';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto Italic'), local('Roboto-Italic'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOkCnqEu92Fr1Mu51xIIzIXKMny.woff2)
+      format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'SB Heading';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOjCnqEu92Fr1Mu51TzBic6CsTYl4BO.woff2)
+      format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'SB Heading';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2)
+      format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'SB Heading';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2)
+      format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Averta-BlackItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-BlackItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Black Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-Black';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Black'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Black.woff') format('woff');
+}
+@font-face {
+  font-family: 'Averta-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Bold'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Averta-ExtraBold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-ExtraBold'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Extra Bold.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-Extrathin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Extrathin'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Extrathin.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Light'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Averta-Semibold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Semibold'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Semibold.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-Thin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Thin'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'Averta-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averta-Regular'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta.woff') format('woff');
+}
+@font-face {
+  font-family: 'Averta-BoldItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-BoldItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Bold Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-ExtraBoldItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-ExtraBoldItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Extra Bold Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-ExtrathinItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-ExtrathinItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Extrathin Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-LightItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-LightItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Light Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-RegularItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-RegularItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Regular Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-SemiboldItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-SemiboldItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Semibold Italic.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Averta-ThinItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Averta-ThinItalic'),
+    url('https://fonts.cdnfonts.com/s/14933/Averta Thin Italic.woff')
+      format('woff');
+}

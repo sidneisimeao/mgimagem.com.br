@@ -7,15 +7,15 @@
   <meta name="description"
     content="Diagnostico por Imagem, no sul de minas com os exames de Ressonância magnetica, Tomografia , Ultrasom, Desintometria ossea">
   <meta name="title" content="Diagnostico por Imagem">
-  <meta property="og:url" content="https://pixeldiagnostico.com.br" />
+  <meta property="og:url" content="https://mgimagem.com.br" />
   <meta property="og:title" content="Postagem do blog" />
   <meta property="og:description"
     content="Diagnostico por Imagem, no sul de minas com os exames de Ressonancia magnetica, Tomografia , Ultrasom, Desintometria ossea" />
-  <meta property="og:image:url" content="{{ assetsUrl('img/pixel.jpeg') }}" />
+  <meta property="og:image:url" content="{{ assetsUrl('img/mega-imagem-og.png') }}" />
   <meta property="og:image:width" content="600" />
   <meta property="og:image:height" content="500" />
   <meta property="og:image:alt" content="" />
-  <title>Pixel Diagnósticos</title>
+  <title>Mega Imagem Ressonância Magnética</title>
   <!-- Font Awesome icons (free version)-->
   {{ style('vendor/fontawesome-free/css/all.min.css') }}
   {{ style('front/css/styles.css') }}
@@ -45,48 +45,56 @@
     </div>
     @endif
     <br />
-    <form action="{{ route('site.pergunta') }}?_method=POST" method="POST" class="form" role="form"  autocomplete="off">
-    {{ csrfField() }}
+    <form action="{{ route('site.pergunta') }}?_method=POST" method="POST" class="form" role="form" autocomplete="off">
+      {{ csrfField() }}
       <div class="form-group row">
         <label for="inputName" class="col-sm-2 col-form-label">Nome completo:</label>
         <div class="col-sm-4">
-            <input value="{{ old('username', username|| '') }}" type="text" name="username" class="form-control {{ (hasErrorFor('username') ? 'is-invalid' : '') }}" id="inputName" placeholder="Nome completo" required>
+          <input value="{{ old('username', username|| '') }}" type="text" name="username"
+            class="form-control {{ (hasErrorFor('username') ? 'is-invalid' : '') }}" id="inputName"
+            placeholder="Nome completo" required>
         </div>
         {{ elIf('<span>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
       </div>
       <div class="form-group row">
-          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-4">
-            <input value="{{ old('email', email|| '') }}" type="email" name="email"  class="form-control {{ (hasErrorFor('email') ? 'is-invalid' : '') }}" id="inputName" placeholder="E-mail" required>
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-4">
+          <input value="{{ old('email', email|| '') }}" type="email" name="email"
+            class="form-control {{ (hasErrorFor('email') ? 'is-invalid' : '') }}" id="inputName" placeholder="E-mail"
+            required>
         </div>
         {{ elIf('<span>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
       </div>
       <div class="form-group row">
         <label for="inputEmail" class="col-sm-2 col-form-label">Pergunta:</label>
         <div class="col-sm-10">
-          <input value="{{ old('question', question|| '') }}" type="text" name="question" class="form-control {{ (hasErrorFor('question') ? 'is-invalid' : '') }}" id="inputQuestion" placeholder="Digite sua pergunta..." required>
+          <input value="{{ old('question', question|| '') }}" type="text" name="question"
+            class="form-control {{ (hasErrorFor('question') ? 'is-invalid' : '') }}" id="inputQuestion"
+            placeholder="Digite sua pergunta..." required>
           {{ elIf('<span>$self</span>', getErrorFor('question'), hasErrorFor('question')) }}
-      </div>
-      <input type="hidden" name="addtional" id='addtional'>
+        </div>
+        <input type="hidden" name="addtional" id='addtional'>
 
-    </div>
-      <div class="form-group row">
-          <div class="col-sm-10 offset-sm-2">
-              <button type="submit" class="btn btn-primary">Enviar Pergunta</button>
-          </div>
       </div>
-  </form><br />
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <button type="submit" class="btn btn-primary">Enviar Pergunta</button>
+        </div>
+      </div>
+    </form><br />
     <div class="text-center m-3">
       <br />
       <h2 class="page-section-heading text-secondary d-inline-block">Redes Sociais</h2>
       <hr />
     </div>
     <ul class="list-group list-group-flush m-3">
-     <li class="list-group-item"><b class='text-primary'>Facebook:<b/> <a href='https://pt-br.facebook.com/pixeldiagnostico/'>FACEBOOK</a></li>
-     <li class="list-group-item"><b class='text-primary'>Instagram:</b> <a href='https://www.https://www.instagram.com/Pixel_diagnostico/'>INSTRAGRAM</a></li>
-     <li class="list-group-item"><b class='text-primary'>WhatsApp:</b> (35) 9835-7697</li>
+      <li class="list-group-item"><b class='text-primary'>Facebook:<b /> <a
+            href='https://pt-br.facebook.com/pixeldiagnostico/'>FACEBOOK</a></li>
+      <li class="list-group-item"><b class='text-primary'>Instagram:</b> <a
+          href='https://www.https://www.instagram.com/Pixel_diagnostico/'>INSTRAGRAM</a></li>
+      <li class="list-group-item"><b class='text-primary'>WhatsApp:</b> (35) 9835-7697</li>
     </ul>
-  <br />
+    <br />
     <div class="text-center">
       <h2 class="page-section-heading text-secondary d-inline-block">PERGUNTAS RESPONDIDAS</h2>
 
@@ -96,21 +104,23 @@
       @if(data)
       @each(item in data)
       <div class="media text-muted border-top border-gray media-search ">
-      <a href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}" data-toggle="modal" data-target="#exampleModalCenter-{{ item.id }}">
+        <a href="{{ route("site.showBlogPost", { slug: item.slug || item.id  }) }}" data-toggle="modal"
+          data-target="#exampleModalCenter-{{ item.id }}">
           <p class="media-body pb-3 mb-0 pt-3 small lh-125 ">
             <strong
               class="text-info">{{ item.created_at.toISOString().slice(0, 10).split('-').reverse().join('-') }}</strong>
-            - {{ safe(item.description.replace(term, '<span style="color:#2C3E50;font-weight:bold">'+term+'</span>')) }}
+            - {{ safe(item.description.replace(term, '<span style="color:#27264E;font-weight:bold">'+term+'</span>')) }}
           </p>
         </a>
       </div>
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter-{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="exampleModalCenter-{{ item.id }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog  modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title text-center" id="exampleModalLongTitle-{{ item.id }}">
-                {{ safe(item.description.replace(term, '<span style="color:#2C3E50;font-weight:bold">'+term+'</span>')) }}
+                {{ safe(item.description.replace(term, '<span style="color:#27264E;font-weight:bold">'+term+'</span>')) }}
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

@@ -1,11 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-
-    <a class="navbar-brand page-top js-scroll-trigger" href="{{ route('/') }}#page-top">
-      <!--PIXEL<br />
-      <span class='page-top-span-text'>DIAGNÓSTICO POR IMAGEM</span>
-      -->
-      <img class="rounded" width="150px" alt="Logotipo Pixel Diagnósticos" src="{{ assetsUrl('img/pixel-logotipo.png') }}" />
+    <a style="padding: 0!important" class="navbar-brand page-top js-scroll-trigger" href="{{ route('/') }}#page-top">
+      <img width="170px" alt="Logotipo Mega Imagem Ressonância Magnética"
+        src="{{ assetsUrl('img/mega-imagem-logotipo-transp.png') }}" />
     </a>
     <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button"
       data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -25,18 +22,12 @@
             href="{{ route('site.posts') }}">BLOG</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-          href="{{ route('site.dr-response') }}">DRº RESPONDE</a>
-      </li>
-      <li target='_new' class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-        href="https://www.medcloud.co/app/do/guest">LAUDOS WEB</a>
-      </li>
-      <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-        href="{{ route('site.searchTerm') }}">
-        <span class="icon text-white">
-          <i class="fas fa-search"></i>
-        </span>
-      </a>
-      </li>
+            href="{{ route('site.searchTerm') }}">
+            <span class="icon text-white">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

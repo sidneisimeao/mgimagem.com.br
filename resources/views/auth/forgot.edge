@@ -14,8 +14,8 @@
                 <div class="text-center">
 
                   <head>
-                    <img class="img-fluid mb-3" alt="Logotipo Pixel Diagnósticos"
-                      src="{{ assetsUrl('img/pixel-logotipo.png') }}" />
+                    <img class="img-fluid mb-3" alt="Logotipo Mega Imagem Ressonância Magnética"
+                      src="{{ assetsUrl('img/mega-imagem-logotipo-white.png') }}" />
                   </head>
                 </div>
                 <form class="user" method="POST" action="{{route('auth.passwords')}}">
@@ -35,21 +35,22 @@
                   <br />
                   @if(flashMessage('success'))
                   <div class="alert alert-info text-center" role="alert">
-                  {{ flashMessage('message') }}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    {{ flashMessage('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
                   @else
-                    <p class="text-info text-center"><b>Digite seu e-mail de cadastro, e click em resetar senha.</b></p>
+                  <p class="text-info text-center"><b>Digite seu e-mail de cadastro, e click em resetar senha.</b></p>
                   @endif
-              </form>
-              <hr>
-              <div class="text-center">
-                <a class="small" href="{{ route('auth.index') }}">
-                  <i class="fa fa-chevron-left"></i>
-                  Voltar para o site
-                </a>
+                </form>
+                <hr>
+                <div class="text-center">
+                  <a class="small" href="{{ route('auth.index') }}">
+                    <i class="fa fa-chevron-left"></i>
+                    Voltar para o site
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -57,6 +58,5 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 @endsection

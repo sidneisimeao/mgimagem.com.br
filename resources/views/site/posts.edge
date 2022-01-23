@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="{{ post.seo }}">
   <meta name="title" content="Diagnostico por Imagem">
-<meta property="og:url" content="{{ url }}" />
+  <meta property="og:url" content="{{ url }}" />
   <meta property="og:title" content="{{ post.name }}" />
   <meta property="og:description" content="{{ post.seo }}" />
   <meta property="og:image:url" content="{{ route("site.showPostImage", { id: post.file_id  }) }}" />
   <meta property="og:image:width" content="600" />
   <meta property="og:image:height" content="500" />
   <meta property="og:image:alt" content="{{ post.name }}" />
-  <title>Pixel Diagnósticos</title>
+  <title>Mega Imagem Ressonância Magnética</title>
   <!-- Font Awesome icons (free version)-->
   {{ style('vendor/fontawesome-free/css/all.min.css') }}
   {{ style('front/css/styles.css') }}
@@ -21,13 +21,14 @@
   {{ style('front/css/body.css') }}
 
   <style>
-    table tbody td{
-      width: auto!important;
-      height: auto!important;
+    table tbody td {
+      width: auto !important;
+      height: auto !important;
       text-align: center
     }
-    table tbody tr{
-      height: auto!important;
+
+    table tbody tr {
+      height: auto !important;
     }
   </style>
 </head>
@@ -89,10 +90,11 @@
 
           <br /><br />
           <div class="col-md-12 col-lg-12 mb-5 mx-auto ">
-            <a href="{{ route("site.posts") }}" style="width:250px" class="btn  mx-auto btn-outline-info btn-lg btn-block">
+            <a href="{{ route("site.posts") }}" style="width:250px"
+              class="btn  mx-auto btn-outline-info btn-lg btn-block">
               <span class="text ">Ver todas</span>
             </a>
-         </div>
+          </div>
       </div>
 
       <!-- Sidebar Widgets Column -->
